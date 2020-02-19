@@ -32,7 +32,7 @@ class CardProject extends StatelessWidget {
 //      },
       child: Container(
         width: 300,
-        height: 600,
+        height: 560,
         child: Column(
           children: <Widget>[
             Stack(
@@ -90,8 +90,23 @@ class CardProject extends StatelessWidget {
 
                 ]
             ),
-            BookList()
+            BookList(),
+            Container(
+              alignment: Alignment.bottomRight,
+             margin: EdgeInsets.all(10.0),
+                child:RaisedButton(
+                  textColor: Colors.white,
+                  color: Colors.cyan[800],
+                  onPressed: () => {},
 
+                  child: Text(
+                    'Select date',
+                  ),
+                ),
+
+
+
+            ),
           ],
         ),
 
