@@ -5,6 +5,8 @@ import 'package:bookinapp/SettingsWidget.dart';
 import 'package:bookinapp/TabLayout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:simple_share/simple_share.dart';
+import 'package:flutter/services.dart';
 
 void main() => runApp(MyApp());
 
@@ -317,16 +319,23 @@ class BookListState extends State<BookList> {
 
 Future<void> _ackAlert(BuildContext context,String tekst) {
   Random random = new Random();
+  String Title='Lot nr FH${random.nextInt(1000)}RT${random.nextInt(20)}';
   return showDialog<void>(
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: Text('Lot nr FH${random.nextInt(1000)}RT${random.nextInt(20)}'),
+        title: Text(Title),
         content:   Text(tekst),
         actions: <Widget>[
+
           FlatButton(
             child: Text('Ok'),
             onPressed: () {
+              SimpleShare.share(
+                title: Title,
+                msg:
+                tekst,
+              );
               Navigator.of(context).pop();
             },
           ),
