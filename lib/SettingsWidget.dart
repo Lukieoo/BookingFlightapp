@@ -2,21 +2,36 @@ import 'package:flutter/material.dart';
 
 
 class SettingsWidget extends StatefulWidget {
-  SettingsWidget({Key key}) : super(key: key);
+  String flight1;
+  String flight2;
+
+  SettingsWidget(String flight1,String flight2,{Key key}) : super(key: key, ){
+    this.flight1=flight1;
+    this.flight2=flight2;
+  }
 
   @override
-  _SettingsWidgetState createState() => new _SettingsWidgetState();
+  _SettingsWidgetState createState() => new _SettingsWidgetState(flight1,flight2);
 }
 
 class _SettingsWidgetState extends State<SettingsWidget> {
 
-  List _cities =  ["Berlin", "Madryt", "Rzym", "Paryż", "Hamburg","Warszawa"];
+  String flight1;
+  String flight2;
 
+  List _cities =  ["Berlin", "Madryt", "Rzym", "Paryż", "Hamburg","Warszawa"];
+  _SettingsWidgetState(String flight1,String flight2){
+
+    this.flight1=flight1;
+    this.flight2=flight2;
+
+  }
 
   List<DropdownMenuItem<String>> _dropDownMenuItems;
 
   String _currentCitydestiny;
   String _currentCitytarget;
+
   @override
   void initState() {
     _dropDownMenuItems = getDropDownMenuItems();
@@ -66,11 +81,13 @@ class _SettingsWidgetState extends State<SettingsWidget> {
   void changedDropDownItem(String selectedCity) {
     setState(() {
       _currentCitydestiny = selectedCity;
+      flight1=selectedCity;
     });
   }
   void changedDropDownItemTarget(String selectedCity) {
     setState(() {
       _currentCitytarget = selectedCity;
+      flight2=selectedCity;
     });
   }
 }
